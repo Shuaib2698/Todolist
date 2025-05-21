@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ToDoItem({ task, onMarkAsDone, onUndo, onTaskClick }) {
+function ToDoItem({ task, onMarkAsDone, onUndo, onTaskClick, onDelete }) {
   return (
     <div className="flex justify-between items-center p-4 mb-4 bg-white rounded-lg shadow-md">
       <div className="flex items-center">
@@ -21,6 +21,10 @@ function ToDoItem({ task, onMarkAsDone, onUndo, onTaskClick }) {
             Undo
           </button>
         )}
+        {/* Delete Button */}
+        <button className="px-4 py-2 bg-gray-500 text-black rounded-lg" onClick={() => onDelete(task.id)}>
+          Delete
+        </button>
       </div>
     </div>
   );

@@ -29,3 +29,12 @@ class TaskDetailAPIView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, pk):
+            try:
+                task = Task.objects.get(pk=pk)
+            except Task.DoesNotExist:
+                return Response({'error': 'Task not found'}, status=status.HTTP_404_NOT_FOUND)
+
+            task.delete()
+            return Response({'message': 'Task deleted successfully'}, status=status.HTTP_204_NO_CONTENT)    
